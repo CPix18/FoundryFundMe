@@ -66,7 +66,7 @@ $ cast --help
 ```
 # Foundry Fund Me
 
-This is a section of the Cyfrin Solidity Course.
+This is based on a section of the Cyfrin Solidity Course.
 
 *[⭐️ Updraft | Foundry Fund Me](https://updraft.cyfrin.io/courses/foundry/foundry-fund-me/fund-me-project-setup)*
 
@@ -107,18 +107,10 @@ This is a section of the Cyfrin Solidity Course.
 ## Quickstart
 
 ```
-git clone https://github.com/Cyfrin/foundry-fund-me-cu
-cd foundry-fund-me-cu
+git clone https://github.com/CPix18/Foundry_Fund_Me
+cd FoundryFundMe
 make
 ```
-
-### Optional Gitpod
-
-If you can't or don't want to run and install locally, you can work with this repo in Gitpod. If you do this, you can skip the `clone this repo` part.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#github.com/PatrickAlphaC/foundry-fund-me-cu)
-
-# Usage
 
 ## Deploy
 
@@ -128,7 +120,7 @@ forge script script/DeployFundMe.s.sol
 
 ## Testing
 
-We talk about 4 test tiers in the video. 
+I learned about these 4 test tiers in the Cyfrin video. 
 
 1. Unit
 2. Integration
