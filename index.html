@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <title>Fund Me App</title>
+</head>
+
+<body>
+  <div class="container"> <!-- Added container div -->
+    <h1>Fund Me App</h1>
+    <div class="button-container"> <!-- Wrap buttons in a button-container -->
+      <button id="connectButton" class="btn">Connect</button>
+      <button id="balanceButton" class="btn">Get Balance</button>
+      <button id="withdrawButton" class="btn">Withdraw</button>
+      <button id="cheaperWithdrawButton" class="btn">Cheaper Withdraw</button>
+    </div>
+    <div class="input-container">
+      <label for="ethAmount">ETH Amount</label>
+      <input id="ethAmount" placeholder="0.01" />
+      <button type="button" id="fundButton" class="btn">Fund</button>
+    </div>
+  </div>
+
+  <script src="./index.js" type="module"></script>
+</body>
+
+</html>

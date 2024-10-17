@@ -1,219 +1,87 @@
-## Foundry
+# WebsiteFundMe
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Big thanks to Patrick Collins from Cyfrin for the videos and github repos!
 
-Foundry consists of:
+*[⭐️ (2:37:02) | Lesson 8: HTML Fund Me](https://www.youtube.com/watch?v=sas02qSFZ74&t=9422s)*
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+This is a minimalistic example what you can find in the [metamask docs](https://docs.metamask.io/guide/create-dapp.html#basic-action-part-1).
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
-# Foundry Fund Me
-
-This is based on a section of the Cyfrin Solidity Course.
-
-*[⭐️ Updraft | Foundry Fund Me](https://updraft.cyfrin.io/courses/foundry/foundry-fund-me/fund-me-project-setup)*
-
-- [Foundry Fund Me](#foundry-fund-me)
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-  - [Quickstart](#quickstart)
-    - [Optional Gitpod](#optional-gitpod)
-- [Usage](#usage)
-  - [Deploy](#deploy)
-  - [Testing](#testing)
-    - [Test Coverage](#test-coverage)
-  - [Local zkSync](#local-zksync)
-    - [(Additional) Requirements](#additional-requirements)
-    - [Setup local zkSync node](#setup-local-zksync-node)
-    - [Deploy to local zkSync node](#deploy-to-local-zksync-node)
-- [Deployment to a testnet or mainnet](#deployment-to-a-testnet-or-mainnet)
-  - [Scripts](#scripts)
-    - [Withdraw](#withdraw)
-  - [Estimate gas](#estimate-gas)
-- [Formatting](#formatting)
-- [Additional Info:](#additional-info)
-  - [Let's talk about what "Official" means](#lets-talk-about-what-official-means)
-  - [Summary](#summary)
+- [html-fund-me-f23](#html-fund-me-f23)
+- [Requirements](#requirements)
+- [Quickstart](#quickstart)
+  - [Execute a transaction - Local EVM](#execute-a-transaction---local-evm)
 - [Thank you!](#thank-you)
 
 
-# Getting Started
-
-## Requirements
+# Requirements
 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - You'll know you did it right if you can run `git --version` and you see a response like `git version x.x.x`
-- [foundry](https://getfoundry.sh/)
-  - You'll know you did it right if you can run `forge --version` and you see a response like `forge 0.2.0 (816e00b 2023-03-16T00:05:26.396218Z)`
+  - You'll know you've installed it right if you can run:
+    - `git --version`
+- [Metamask](https://metamask.io/)
+  - This is a browser extension that lets you interact with the blockchain.
 
+# Quickstart 
 
-## Quickstart
+1. Clone the repo
 
 ```
 git clone https://github.com/CPix18/Foundry_Fund_Me
-cd FoundryFundMe
-make
+cd WebsiteFundMe
 ```
 
-## Deploy
+2. Run the `index.html` file
+
+You can usually just double click the file to "run it in the browser". Or you can right click the file in your VSCode and run "open with live server" if you have the live server VSCode extension (ritwickdey.LiveServer).
+
+And you should see a button that says "connect".
+
+Hit it, and you should see metamask pop up.
+
+## Execute a transaction - Local EVM
+
+If you want to execute a transaction follow this:
+
+Make sure you have the following installed:
+
+1. You'll need to open up a second terminal and run:
 
 ```
-forge script script/DeployFundMe.s.sol
+git clone https://github.com/Cyfrin/foundry-fund-me-cu
+cd foundry-fund-me-cu
+make build
+make anvil
 ```
 
-## Testing
-
-I learned about these 4 test tiers in the Cyfrin video. 
-
-1. Unit
-2. Integration
-3. Forked
-4. Staging
-
-This repo we cover #1 and #3. 
-
-
+Then, in a second terminal
 ```
-forge test
+make deploy
 ```
 
-or 
+This will deploy a sample contract and start a local hardhat blockchain.
 
-```
-// Only run test functions matching the specified regex pattern.
+2. Update your `constants.js` with the new contract address.
 
-"forge test -m testFunctionName" is deprecated. Please use 
+In your `constants.js` file, update the variable `contractAddress` with the address of the deployed "FundMe" contract. You'll see it near the top of the hardhat output.
 
-forge test --match-test testFunctionName
-```
+3. Connect your [metamask](https://metamask.io/) to your local hardhat blockchain.
 
-or
+> **PLEASE USE A METAMASK ACCOUNT THAT ISNT ASSOCIATED WITH ANY REAL MONEY.**
+> I usually use a few different browser profiles to separate my metamasks easily.
 
-```
-forge test --fork-url $SEPOLIA_RPC_URL
-```
+In the output of the above command, take one of the private key accounts and [import it into your metamask.](https://metamask.zendesk.com/hc/en-us/articles/360015489331-How-to-import-an-Account)
 
-### Test Coverage
+Additionally, add your localhost with chainid 31337 to your metamask.
 
-```
-forge coverage
-```
+1. Refresh the front end, input an amount in the text box, and hit `fund` button after connecting
 
-# Deployment to a testnet or mainnet
+# Thank you!
 
-1. Setup environment variables
+If you appreciated this, feel free to follow me or donate!
 
-You'll want to set your `SEPOLIA_RPC_URL` and `PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
+ETH/Arbitrum/Optimism/Polygon/etc Address: 
+0x75C875c4b81D792797c6ccCe724c03FE8d31FE0e
 
-- `PRIVATE_KEY`: The private key of your account (like from [metamask](https://metamask.io/)). **NOTE:** FOR DEVELOPMENT, PLEASE USE A KEY THAT DOESN'T HAVE ANY REAL FUNDS ASSOCIATED WITH IT.
-  - You can [learn how to export it here](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key).
-- `SEPOLIA_RPC_URL`: This is url of the sepolia testnet node you're working with. You can get setup with one for free from [Alchemy](https://alchemy.com/?a=673c802981)
+[![Collin Pixley Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/l2explorer.eth)
+[![Collin Pixley Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/collinpixley/)
 
-Optionally, add your `ETHERSCAN_API_KEY` if you want to verify your contract on [Etherscan](https://etherscan.io/).
-
-2. Get testnet ETH
-
-Head over to [faucets.chain.link](https://faucets.chain.link/) and get some testnet ETH. You should see the ETH show up in your metamask.
-
-3. Deploy
-
-```
-forge script script/DeployFundMe.s.sol --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY
-```
-
-## Scripts
-
-After deploying to a testnet or local net, you can run the scripts. 
-
-Using cast deployed locally example: 
-
-```
-cast send <FUNDME_CONTRACT_ADDRESS> "fund()" --value 0.1ether --private-key <PRIVATE_KEY>
-```
-
-or
-```
-forge script script/Interactions.s.sol:FundFundMe --rpc-url sepolia  --private-key $PRIVATE_KEY  --broadcast
-forge script script/Interactions.s.sol:WithdrawFundMe --rpc-url sepolia  --private-key $PRIVATE_KEY  --broadcast
-```
-
-### Withdraw
-
-```
-cast send <FUNDME_CONTRACT_ADDRESS> "withdraw()"  --private-key <PRIVATE_KEY>
-```
-
-## Estimate gas
-
-You can estimate how much gas things cost by running:
-
-```
-forge snapshot
-```
-
-And you'll see an output file called `.gas-snapshot`
-
-
-# Formatting
-
-
-To run code formatting:
-```
-forge fmt
