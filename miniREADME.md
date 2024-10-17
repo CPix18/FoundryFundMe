@@ -47,8 +47,8 @@ Make sure you have the following installed:
 1. You'll need to open up a second terminal and run:
 
 ```
-git clone https://github.com/Cyfrin/foundry-fund-me-cu
-cd foundry-fund-me-cu
+git clone https://github.com/CPix18/Foundry_Fund_Me
+cd FoundryFundMe
 make build
 make anvil
 ```
