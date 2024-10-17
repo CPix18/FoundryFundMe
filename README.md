@@ -217,6 +217,7 @@ And you'll see an output file called `.gas-snapshot`
 To run code formatting:
 ```
 forge fmt
+```
 
 # Thank you!
 
