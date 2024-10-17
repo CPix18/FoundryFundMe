@@ -1,30 +1,41 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #e9ecef;
+    background-image: url('images/background.png');
+    /* Set background image */
+    background-size: cover;
+    /* Cover the entire background */
+    background-position: center;
+    /* Center the background image */
     color: #343a40;
     display: flex;
-    justify-content: flex-start;
-    /* Align to the left */
+    justify-content: center;
+    /* Center container horizontally */
     align-items: center;
+    /* Center container vertically */
     height: 100vh;
     margin: 0;
-    padding-left: 20px;
-    /* Add some left padding */
+    padding: 0;
+    /* Remove padding to avoid shifting */
+    position: relative;
+    /* Allow positioning of the side image */
 }
 
 .container {
-    text-align: left;
-    /* Align text to the left */
+    text-align: center;
+    /* Center text within the container */
     background-color: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     width: 300px;
     /* Adjust width if needed */
+    z-index: 1;
+    /* Ensure container is above the image */
 }
 
-h1 {
+.title {
     margin-bottom: 20px;
+    /* Space below the title */
     font-size: 28px;
     color: #007bff;
 }
@@ -32,6 +43,7 @@ h1 {
 .button-container {
     display: flex;
     flex-direction: column;
+    /* Stack buttons vertically */
     gap: 15px;
     /* Increase space between buttons */
 }
@@ -77,6 +89,19 @@ input {
 
 .btn:active {
     transform: translateY(1px);
+}
+
+.side-image {
+    max-width: 150px;
+    /* Adjust the size as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+    position: absolute;
+    /* Position it relative to the body */
+    right: 20px;
+    /* Space from the right */
+    top: 20px;
+    /* Space from the top */
 }
 
 @media (max-width: 400px) {
